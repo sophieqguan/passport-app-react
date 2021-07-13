@@ -37,28 +37,45 @@ function App() {
   }
 
   return (
-    <div className="App" style = {{
-      backgroundColor: "#2b2b2b",
-    }}>
-        <img src={logo} className="App-logo" alt="logo"/>
-        <p style = {{
-          color: "white",
-        }}>
-          someday, this will be done and your passport will be done...
-        </p>
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6">
-                        <div className="form-group files color">
-                            <label className="input-color">Upload Your File </label>
-                            <input type="file" className="form-control input-color" name="file" 
-                            onChange={onFileChangeHandler}/>
-                        </div>
+    <div className="App">
+       <div className="container">
+              <h1 class="App-logo float-start" style={{color:"white"}}>P</h1>
+              <h1 className="title float-end">Passport Photo Placer</h1>
+
+          <div className="row">
+            
+            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+              <div class="card">
+                <div class="card-body-1">
+                  <h5 class="font-weight-bold card-title">About The App</h5>
+                  <p class="card-text">
+                    import an image and we'll place it on 
+                    a standard passport photo grid for you, 
+                    which you can save and use to print.
+                  </p>
+
+                  <div className="form-group files color">
+                        <input type="file" className="form-control input-color" name="file" 
+                        onChange={onFileChangeHandler}/>
+                  </div>              
                 </div>
+              </div>
             </div>
-            <div className="row">
-              <img ref = {uploadedImage}/>
+            
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                 <p style={{color: 'white'}}> image selected: </p>
+                 <div class="text-center"
+                      style={{marginLeft: "30%",
+                              borderStyle: "dashed", borderColor: "white", 
+                              width: "40%", height: "40%",
+                              backgroundColor: "#57585e"}}>
+                    <img 
+                      ref = {uploadedImage} 
+                      class="card-img-top"
+                      style={{width:"90%", height:"90%"}}/>
+                 </div>
             </div>
+          </div>
         </div>
     </div>
   );
