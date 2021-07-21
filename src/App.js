@@ -9,11 +9,17 @@ function App() {
   const submitFile = () => {
     if (state != null) {
       var button = document.getElementById("submitBtn");
-      button.innerHTML = "image submitted! now comes the wait...";
+      button.innerHTML = "<p class='text-muted' style={{color: 'white'}}>image submitted! now comes the wait...</p>";
     }
   }
 
+  const changeGridDisplay = () => {
+    document.getElementById("imgHolder").classList = 'col-sm-6';
+    console.log("entered here!");
+  }
+
   async function onFileChangeHandler (e) {
+    changeGridDisplay();
     const [file] = e.target.files;
     if (file) {
       const reader = new FileReader();
@@ -49,7 +55,7 @@ function App() {
       <h1 class="title float-end">Passport Photo Placer</h1>
       <div class="container">
           <div class="row" style={{borderRadius:5}}>
-            <div class = "col-sm-6 col-md-6 col-xs-6" style={{minWidth:"18rem"}}>
+            <div id="imgHolder" class = "col-sm-3 col-md-3 col-xs-3">
                   <div class = "border border-warning" 
                       style={{borderRadius: 5, 
                               border:5,
