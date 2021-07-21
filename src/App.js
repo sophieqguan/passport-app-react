@@ -45,50 +45,51 @@ function App() {
 
   return (
     <div className="App">
-       <div className="container">
-              <h1 class="App-logo float-start" style={{color:"white"}}>|</h1>
-              <h1 className="title float-end">Passport Photo Placer</h1>
+      <h1 class="App-logo float-start" style={{color:"white"}}>|</h1>
+      <h1 class="title float-end">Passport Photo Placer</h1>
+      <div class="container">
+          <div class="row" style={{borderRadius:5}}>
+            <div class = "col-sm-6 col-md-6 col-xs-6" style={{minWidth:"18rem"}}>
+                  <div class = "border border-warning" 
+                      style={{borderRadius: 5, 
+                              border:5,
+                              borderColor: "pink",
+                              maxHeight:200}}>
+                      <img ref = {uploadedImage} 
+                      class="img-fluid"
+                      style={{width:"100%"}}/>
+                  </div>
+            </div>
 
-          <div className="row">
-            
-            <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-              <div class="card">
-                <div class="card-body-1">
-                  <h5 class="font-weight-bold card-title">About The App</h5>
-                  <p class="card-text">
-                    import an image and we'll place it on 
-                    a standard passport photo grid for you, 
-                    which you can save and use to print.
-                  </p>
-
-                  <div className="form-group files color">
-                        <input type="file" className="form-control input-color" name="file" 
-                        onChange={onFileChangeHandler}/>
+            <div class = "col-md-6 col-sm-6 col-xs-6">
+              <div class="text-white" style={{borderRadius: 5, backgroundColor: "#454545"}}>
+                <div class="" style={{padding:10}}>
+                  <div class="card-header text-warning">Upload an image</div>
+                  
+                  <div class="card-body text-white">
+                      <p class="card-text" style={{padding:15, color: "white", fontSize: "10px"}}>
+                        import an image and we'll place it on 
+                        a standard passport photo grid for you, 
+                        which you can save and use to print.
+                      </p>
+                  </div>
+                  <div class="form-group files color bg-muted">
+                    <input type="file" className="form-control input-color" name="file" 
+                    onChange={onFileChangeHandler}/>
                   </div>  
 
                   <div id = "submitBtn">
-                    <button type="button" class="btn btn-light"
-                            onClick={submitFile}>Go!</button>
+                    <button type="button" class="btn btn-warning btn-block" onClick={submitFile}>Go!</button>
                   </div>
 
-                </div>
               </div>
             </div>
+          
             
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                 <p style={{color: 'white'}}> image selected: </p>
-                 <div class="text-center"
-                      style={{marginLeft: "25%",
-                              borderStyle: "solid", borderColor: "white", 
-                              width: "50%", height: "40%",}}>
-                    <img 
-                      ref = {uploadedImage} 
-                      class="card-img-top"
-                      style={{width:"90%", height:"90%"}}/>
-                 </div>
-            </div>
+
           </div>
         </div>
+      </div>
     </div>
   );
 }
