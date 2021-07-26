@@ -72,11 +72,6 @@ function App() {
               return reader.read().then(processText)
           })
 
-
-
-
-
-
     };
     console.log(res.status);
   }
@@ -84,7 +79,7 @@ function App() {
   return (
     <div className="App">
       <h1 class="App-logo float-start" style={{color:"white"}}>|</h1>
-      <h1 class="title float-end">Passport Photo Placer</h1>
+      <h1 class="title float-end">Passport Photo Formatter</h1>
       <div class="container">
           <div class="row" style={{borderRadius:5}}>
             <div id="imgHolder" class = "col-sm-3 col-md-3 col-xs-3">

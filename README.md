@@ -1,6 +1,6 @@
 # Passport Image Placer
 
-This project is part of the Passport Image Placer application. It hosts the UI of the site.
+This project is part of the Passport Photo Formatter application. It hosts the UI of the site.
 
 ## Available Scripts
 
