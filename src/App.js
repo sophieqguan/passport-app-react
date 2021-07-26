@@ -3,8 +3,9 @@ import './App.css';
 import React,{ Component, useState} from "react";
 
 function App() {
-  const uploadedImage = React.useRef(null);
-  const [state, setState] = useState("");
+  const [state, setState] = useState(null);
+
+  var imgFile = "";
 
   const submitFile = () => {
     if (state != null) {
@@ -15,26 +16,24 @@ function App() {
 
   const changeGridDisplay = () => {
     document.getElementById("imgHolder").classList = 'col-sm-6';
-    console.log("entered here!");
+  }
+
+  const updateImage = () => {
+    var imgDisplay = document.getElementById("img");
+    imgDisplay.src = imgFile;
   }
 
   async function onFileChangeHandler (e) {
     changeGridDisplay();
     const [file] = e.target.files;
-    if (file) {
-      const reader = new FileReader();
-      const {current} = uploadedImage;
-      current.file = file;
-      reader.onload = (e) => {
-          current.src = e.target.result;
-      }
-      reader.readAsDataURL(file);
-    };
+    imgFile = URL.createObjectURL(file);
+    updateImage();
 
     e.preventDefault();
     setState({
-        selectedFile: e.target.files[0],
-    });
+        selectedFile: file,
+    });  
+
     const formData = new FormData();
     formData.append('file', file);
     
@@ -43,8 +42,41 @@ function App() {
         body: formData
     });
     if(res.ok) {
-        console.log(res.data)
         alert("File uploaded successfully.")
+        
+        const reader = await res.body.getReader();
+
+          let chunks = [];
+          reader.read().then(function processText({ done, value }) {
+
+              if (done) {
+                  // console.log('Stream finished. Content received:')
+
+                  // console.log(chunks);
+
+                  const blob = new Blob([chunks], { type: "image/png" });
+                  // console.log(blob);
+
+                  imgFile = URL.createObjectURL(blob);
+                  updateImage();
+                  return;
+              }
+
+              // console.log(`Received ${chunks.length} chars so far!`)
+              // console.log(value);
+              const tempArray = new Uint8Array(chunks.length + value.length);
+              tempArray.set(chunks);
+              tempArray.set(value, chunks.length);
+              chunks = tempArray
+
+              return reader.read().then(processText)
+          })
+
+
+
+
+
+
     };
     console.log(res.status);
   }
@@ -61,9 +93,12 @@ function App() {
                               border:5,
                               borderColor: "pink",
                               maxHeight:200}}>
-                      <img ref = {uploadedImage} 
+                      <img id = "img" src = "" 
+                        class="img-fluid"
+                        style={{width:"100%"}}/>
+                      {/*<img ref = {uploadedImage} 
                       class="img-fluid"
-                      style={{width:"100%"}}/>
+                      style={{width:"100%"}}/>*/}
                   </div>
             </div>
 
