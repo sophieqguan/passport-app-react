@@ -67,3 +67,18 @@ html body {
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (max-width: 300px) {
+  #instruction {
+      display: none;
+  }
+  #appTitle {
+    font-size:20px;
+  }
+  #cardTitle {
+    padding-bottom:10px;
+  }
+  #img {
+    padding-bottom:20px;
+  }
+}
