@@ -24,7 +24,6 @@ function App() {
       updateLoadingPct(100);
       setTimeout(function() {hideLoading()}, 1000)},
       500);
-      //setTimeout(updateLoadingPct(100), 10000);
   }
 
   const hideLoading = () => {
