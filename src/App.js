@@ -15,34 +15,22 @@ function App() {
     var imgDisplay = document.getElementById("img");
     imgDisplay.src = imgFile;
   }
-  
+
   const showLoading = () => {
-    var container = document.getElementById("loadingBar");
-    container.innerHTML = "<div class='progress'><div class='progress-bar bg-warning' id='progBar' role='progressbar' style=\"width:0%; background-color:#f0ad4e\"></div></div>";
-    //update percentage completed
-    setTimeout(function () {
-      updateLoadingPct(100);
-      setTimeout(function() {hideLoading()}, 1000)},
-      500);
+    document.getElementById("loading").innerHTML = ".";
+    document.getElementById("loading").classList.add("loader");
   }
 
   const hideLoading = () => {
-    var container = document.getElementById("loadingBar");
-    container.innerHTML = "";
+    document.getElementById("loading").innerHTML = "";
   }
-
-  const updateLoadingPct = (pct) => {
-    var container = document.getElementById("progBar");
-    var newStyle = "width:" + pct + "%; background-color: #f0ad4e";
-    container.style = newStyle;
-  }
-
+  
   async function onFileChangeHandler (e) {
-    showLoading();
     changeGridDisplay();
     const [file] = e.target.files;
     imgFile = URL.createObjectURL(file);
     updateImage();
+    showLoading();
 
     e.preventDefault();
     setState({
@@ -57,7 +45,8 @@ function App() {
         body: formData
     });
 
-    setTimeout(function () {displayFinal(res)}, 1000);
+    displayFinal(res);
+    hideLoading();
     
   }
 
@@ -105,9 +94,8 @@ function App() {
             </div>
 
             <div class = "col-md-6 col-sm-6 col-xs-12">
-            
-              <div id="loadingBar">
-              </div>
+                         
+              <div id="loading" style={{color:"white", paddingBottom:"1%"}}></div>
               <div class="text-white" style={{borderRadius: 5, backgroundColor: "#454545"}}>
                 <div class="" style={{padding:10}}>
                   <div id="cardTitle" class="card-header text-warning">Upload an image</div>

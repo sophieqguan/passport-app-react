@@ -17,6 +17,10 @@ html body {
   .App-logo {
     animation: App-logo-spin infinite 60s linear;
   }
+
+  .loader {
+    animation: App-logo-spin infinite 1s linear;
+  }
 }
 
 .card-title {
