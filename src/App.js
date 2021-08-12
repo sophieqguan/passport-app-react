@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
 
@@ -16,13 +17,20 @@ function App() {
     imgDisplay.src = imgFile;
   }
 
+  let text;
   const showLoading = () => {
     document.getElementById("loading").innerHTML = ".";
     document.getElementById("loading").classList.add("loader");
+    const loadingText = new loader(document.getElementById("loadText"));
+    loadingText.start();
+    text = setInterval(function(){document.getElementById("loadText").innerHTML = loadingText.get()},1000);
+    loadingText.stop();
   }
 
   const hideLoading = () => {
     document.getElementById("loading").innerHTML = "";
+    clearInterval(text);
+    document.getElementById("loadText").style.display = "none";
   }
   
   async function onFileChangeHandler (e) {
@@ -95,7 +103,8 @@ function App() {
 
             <div class = "col-md-6 col-sm-6 col-xs-12">
                          
-              <div id="loading" style={{color:"white", paddingBottom:"1%"}}></div>
+              <div id="loading" style={{color:"white", paddingBottom:"1%", fontSize: "30px"}}></div>
+              <div id="loadText" style={{color:"white", paddingBottom:"4%"}}></div>
               <div class="text-white" style={{borderRadius: 5, backgroundColor: "#454545"}}>
                 <div class="" style={{padding:10}}>
                   <div id="cardTitle" class="card-header text-warning">Upload an image</div>
