@@ -6,7 +6,7 @@ import test from "./test.png";
 
 function App() {
   const [state, setState] = useState(null);
-  const apiURL = 'http://localhost:8080/upload';
+  const apiURL = '/upload';
   var imgFileURL = "";
 
   const changeGridDisplay = () => {
