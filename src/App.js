@@ -2,6 +2,7 @@ import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
 
+
 function App() {
   const [state, setState] = useState(null);
   const apiURL = 'https://passport-formatter.herokuapp.com/upload';
@@ -61,7 +62,10 @@ function App() {
     
     let res = await fetch (apiURL, {
         method: 'post',
-        body: formData
+        body: formData,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
     });
 
     displayFinal(res);
