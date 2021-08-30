@@ -3,10 +3,11 @@ import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
 import test from "./test.png";
+import cors from 'cors';
 
 function App() {
   const [state, setState] = useState(null);
-  const apiURL = 'https://passport-formatter.herokuapp.com/upload';
+  const apiURL = '/upload';
   var imgFileURL = "";
 
   const changeGridDisplay = () => {
