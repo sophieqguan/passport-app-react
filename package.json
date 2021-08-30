@@ -35,10 +35,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": {
-    "/": {
-      "target": "https://passport-formatter.herokuapp.com/",
-      "ws": true
-    }
-  }
+  "proxy": "https://passport-formatter.herokuapp.com/"
 }
