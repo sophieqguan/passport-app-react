@@ -6,7 +6,7 @@ import test from "./test.png";
 
 function App() {
   const [state, setState] = useState(null);
-  const apiURL = '/upload';
+  const apiURL = 'https://passport-formatter.herokuapp.com/upload';
   var imgFileURL = "";
 
   const changeGridDisplay = () => {
