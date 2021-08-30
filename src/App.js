@@ -2,11 +2,12 @@ import logo from './logo.svg';
 import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
+import test from "./test.png";
 
 function App() {
   const [state, setState] = useState(null);
   const apiURL = 'http://localhost:8080/upload';
-  var imgFile = "";
+  var imgFileURL = "";
 
   const changeGridDisplay = () => {
     document.getElementById("imgHolder").classList = 'col-m-6 col-sm-6 col-xs-12';
@@ -14,7 +15,19 @@ function App() {
   
   const updateImage = () => {
     var imgDisplay = document.getElementById("img");
-    imgDisplay.src = imgFile;
+    imgDisplay.src = imgFileURL;
+  }
+
+  const downloadFile = () => {
+    var link = document.createElement('a');
+    link.href = document.getElementById("img").src;
+    link.setAttribute('download', "downloadSample.png");
+    document.body.appendChild(link);
+    link.click();
+  }
+
+  const showDownloadButton = () => {
+    document.getElementById("downloadBtn").style.display = "";
   }
 
   let text;
@@ -36,7 +49,7 @@ function App() {
   async function onFileChangeHandler (e) {
     changeGridDisplay();
     const [file] = e.target.files;
-    imgFile = URL.createObjectURL(file);
+    imgFileURL = URL.createObjectURL(file);
     updateImage();
     showLoading();
 
@@ -66,8 +79,9 @@ function App() {
 
             if (done) {
                 const blob = new Blob([chunks], { type: "image/png" });
-                imgFile = URL.createObjectURL(blob);
+                imgFileURL = URL.createObjectURL(blob);
                 updateImage();
+                showDownloadButton();
                 return;
             }
             const tempArray = new Uint8Array(chunks.length + value.length);
@@ -106,7 +120,7 @@ function App() {
               <div id="loading" style={{color:"white", paddingBottom:"1%", fontSize: "30px"}}></div>
               <div id="loadText" style={{color:"white", paddingBottom:"4%"}}></div>
               <div class="text-white" style={{borderRadius: 5, backgroundColor: "#454545"}}>
-                <div class="" style={{padding:10}}>
+                <div class="infoCard" style={{padding:10}}>
                   <div id="cardTitle" class="card-header text-warning">Upload an image</div>
                   
                   <div class="card-body text-white">
@@ -119,8 +133,12 @@ function App() {
                   <div class="form-group files color bg-muted">
                     <input type="file" className="form-control input-color" name="file" 
                     onChange={onFileChangeHandler}/>
-                  </div>  
+                  </div>
               </div>
+            </div>
+
+            <div id = "downloadBtn" style={{display:"none"}}>
+                <button type="button" class="btn btn-warning" onClick={downloadFile} style={{width:"100%"}}>Save Image</button>
             </div>
           </div>
         </div>
