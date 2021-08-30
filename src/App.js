@@ -1,9 +1,6 @@
-import logo from './logo.svg';
 import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
-import test from "./test.png";
-import cors from 'cors';
 
 function App() {
   const [state, setState] = useState(null);
