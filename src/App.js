@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
 import test from "./test.png";
+
 
 function App() {
   const [state, setState] = useState(null);
@@ -63,7 +63,10 @@ function App() {
     
     let res = await fetch (apiURL, {
         method: 'post',
-        body: formData
+        body: formData,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
     });
 
     displayFinal(res);
