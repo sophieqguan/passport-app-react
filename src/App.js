@@ -1,7 +1,6 @@
 import loader from './loader';
 import './App.css';
 import React,{ Component, useState} from "react";
-import test from "./test.png";
 
 
 function App() {

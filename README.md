@@ -2,19 +2,12 @@
 
 This project is part of the Passport Photo Formatter application. It hosts the UI of the site.
 
-## Available Scripts
+## Launching (React)
 
-In the project directory, you can run:
+In the project root directory, run `npm start`
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-## Example Run (with Java project running) 
+## Example Run (with Spring Boot application running) 
+![Demo](./example/Demo.gif)
 
 ### front page
 ![Front Page](https://raw.githubusercontent.com/sophieqguan/passport-photo-formatter-React/main/example/front_page.png)
