@@ -1,4 +1,4 @@
-# Passport Image Placer
+# Passport Image Placergi
 [![Heroku](https://www.herokucdn.com/deploy/button.svg)](https://formatter-passport.herokuapp.com/)
 
 This project is part of the Passport Photo Formatter application. It hosts the UI of the site.
