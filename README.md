@@ -1,5 +1,5 @@
 # Passport Photo Formatter 
-![Heroku](https://pyheroku-badge.herokuapp.com/?app=formatter-passport&style=flat)
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=formatter-passport)
 
 Formats a user-upload portrait image into standard 2" x 2" US passport photo size at 300 dpi. User can download formatted and gridded image for printing. Grid image is 4" x 6" at 300 dpi. 
 
